@@ -4,9 +4,15 @@ from datetime import datetime, timedelta
 import bcrypt
 from pymongo import MongoClient
 from jose import jwt, JWTError
+from dotenv import load_dotenv
+import os
 
-# MongoDB Connection
-MONGODB_URI = "mongodb+srv://aitexttoimage:wordcanvas123@cluster0.dtqfae2.mongodb.net/"
+# Load environment variables
+load_dotenv()
+
+# Connect to MongoDB
+MONGODB_URI = os.getenv("MONGODB_URI")
+
 client = MongoClient(MONGODB_URI)
 db = client["mydatabase"]
 users_collection = db["users"]
